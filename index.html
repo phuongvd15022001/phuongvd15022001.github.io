@@ -141,8 +141,20 @@
             color: var(--primary);
             padding: 0.3rem 1rem;
             border-radius: 30px;
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+        }
+
+        .stack-item {
+            background: var(--primary-soft);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
         }
 
         .contact-info {
@@ -161,6 +173,10 @@
 
         a:hover {
             color: var(--primary);
+        }
+
+        .item-org {
+            font-size: 0.9rem;
         }
         
         .section {
@@ -218,11 +234,6 @@
             color: var(--primary);
         }
 
-        .item-org {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-        }
-
         footer {
             text-align: center;
             margin-top: 3rem;
@@ -245,16 +256,6 @@
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
-        }
-
-        .stack-item {
-            background: var(--primary-soft);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid var(--border);
         }
 
         .edu-image img {
@@ -339,7 +340,7 @@
                 <span class="item-title">Kỹ sư Phần mềm (Desktop App)</span>
                 <span class="item-date">Tháng/Năm - Hiện tại</span>
             </div>
-            <div class="item-org">[Tên Công Ty]</div>
+            <a class="item-org" href="https://www.dipro-tech.com/vi" target="_blank">DIPROTECH</a>
             <ul>
                 <li>Phát triển và bảo trì các dự án ứng dụng desktop sử dụng framework WPF và Avalonia.</li>
                 <li>Thiết lập và quản lý quy trình làm việc bằng Git, cấu hình SSH keys và tối ưu hóa workflow trên môi trường macOS/Windows.</li>
@@ -351,7 +352,7 @@
                 <span class="item-title">Kỹ sư Phần mềm (Desktop App)</span>
                 <span class="item-date">Tháng/Năm - Hiện tại</span>
             </div>
-            <div class="item-org">[Tên Công Ty]</div>
+            <a class="item-org" href="https://www.dipro-tech.com/vi" target="_blank">DIPROTECH</a>
             <ul>
                 <li>Phát triển và bảo trì các dự án ứng dụng desktop sử dụng framework WPF và Avalonia.</li>
                 <li>Thiết lập và quản lý quy trình làm việc bằng Git, cấu hình SSH keys và tối ưu hóa workflow trên môi trường macOS/Windows.</li>
@@ -367,7 +368,7 @@
                 <span class="item-title" id="title-university">Kỹ sư Công nghệ Thông tin</span>
                 <span class="item-date">2019 - 2023</span>
             </div>
-            <a href="https://en.dut.udn.vn/" target="_blank" id="dut-text">ĐẠI HỌC ĐÀ NẴNG - TRƯỜNG ĐẠI HỌC BÁCH KHOA</a>
+            <a class="item-org" href="https://en.dut.udn.vn/" target="_blank" id="dut-text">ĐẠI HỌC ĐÀ NẴNG - TRƯỜNG ĐẠI HỌC BÁCH KHOA</a>
         </div>
         <div class="edu-image">
             <img src="https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png">
