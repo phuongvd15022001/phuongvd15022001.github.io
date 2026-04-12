@@ -153,7 +153,7 @@
             padding: 0.4rem 1rem;
             border-radius: 999px;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 600;
             border: 1px solid var(--border);
         }
 
@@ -256,6 +256,7 @@
             display: flex;
             gap: 0.8rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .edu-image img {
@@ -263,10 +264,32 @@
             height: auto;
         }
 
+        .item-role {
+            font-size: 0.85rem;
+            color: var(--subtext);
+            margin-top: 4px;
+            display: inline-block;
+        }
+
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
+                align-items: center;
+            }
+
+            .hero-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .location {
+                justify-content: center;
+            }
+
+            .contact-info {
+                align-items: center;
             }
         }
     </style>
@@ -276,6 +299,7 @@
 
 <div class="tab-bar">
     <div class="tab-container">
+        <a href="#stack" class="tab-link" id="tab-skills">🧩 Kỹ năng</a>
         <a href="#about" class="tab-link" id="tab-about">📄 Giới thiệu</a>
         <a href="#experience" class="tab-link" id="tab-exp">💼 Kinh nghiệm</a>
         <a href="#education" class="tab-link" id="tab-edu">🎓 Học vấn</a>
@@ -301,14 +325,16 @@
     </div>
 
     <div id="stack" class="section">
-        <div class="section-title">Main Stack</div>
+        <div class="section-title" id="key-skills">Kỹ năng chính</div>
         <div class="stack-list">
             <span class="stack-item">NodeJS</span>
+            <span class="stack-item">NestJS</span>
             <span class="stack-item">ReactJS</span>
+            <span class="stack-item">NextJS</span>
             <span class="stack-item">HTML</span>
             <span class="stack-item">CSS</span>
-            <span class="stack-item">PostgreSQL</span>
             <span class="stack-item">MySQL</span>
+            <span class="stack-item">PostgreSQL</span>
             <span class="stack-item">DynamoDB</span>
             <span class="stack-item">SQLite</span>
             <span class="stack-item">Prisma</span>
@@ -335,28 +361,142 @@
 
     <div id="experience" class="section">
         <div class="section-title" id="exp-title">Kinh nghiệm</div>
+
+        <!-- GolfBid -->
         <div class="timeline-item">
             <div class="item-header">
-                <span class="item-title">Kỹ sư Phần mềm (Desktop App)</span>
-                <span class="item-date">Tháng/Năm - Hiện tại</span>
+                <span class="item-title">GolfBid - Golf Ticket Auction Platform</span>
+                <span class="item-date">11/2025 - Now</span>
             </div>
-            <a class="item-org" href="https://www.dipro-tech.com/vi" target="_blank">DIPROTECH</a>
-            <ul>
-                <li>Phát triển và bảo trì các dự án ứng dụng desktop sử dụng framework WPF và Avalonia.</li>
-                <li>Thiết lập và quản lý quy trình làm việc bằng Git, cấu hình SSH keys và tối ưu hóa workflow trên môi trường macOS/Windows.</li>
-                <li>Phối hợp cùng team để phân tích yêu cầu, thiết kế kiến trúc phần mềm và giải quyết các bài toán về hiệu suất ứng dụng.</li>
+            <span class="item-role">Software Engineer (Backend / Desktop)</span>
+           <ul>
+                <li>Xây dựng hệ thống đấu giá (auction system) cho thẻ chơi golf.</li>
+                <li>Thiết kế và quản lý transaction system (bid, payment flow, trạng thái giao dịch).</li>
+                <li>Quản lý dữ liệu thẻ golf: pricing, availability, history usage.</li>
+                <li>Áp dụng AI để hỗ trợ định giá thẻ golf dựa trên dữ liệu thị trường.</li>
+                <li>Tích hợp Rakuten API để hiển thị và đồng bộ thông tin sân golf.</li>
+                <li>Thiết kế database tối ưu cho hệ thống nhiều lượt bid đồng thời (concurrency handling).</li>
             </ul>
         </div>
+
+        <!-- CCT -->
         <div class="timeline-item">
             <div class="item-header">
-                <span class="item-title">Kỹ sư Phần mềm (Desktop App)</span>
-                <span class="item-date">Tháng/Năm - Hiện tại</span>
+                <span class="item-title">CCT - Call Center System</span>
+                <span class="item-date">06/2025 - 11/2025</span>
             </div>
-            <a class="item-org" href="https://www.dipro-tech.com/vi" target="_blank">DIPROTECH</a>
+            <span class="item-role">Software Engineer (Backend / Desktop)</span>
             <ul>
-                <li>Phát triển và bảo trì các dự án ứng dụng desktop sử dụng framework WPF và Avalonia.</li>
-                <li>Thiết lập và quản lý quy trình làm việc bằng Git, cấu hình SSH keys và tối ưu hóa workflow trên môi trường macOS/Windows.</li>
-                <li>Phối hợp cùng team để phân tích yêu cầu, thiết kế kiến trúc phần mềm và giải quyết các bài toán về hiệu suất ứng dụng.</li>
+                <li>Phát triển hệ thống Call Center nội bộ.</li>
+                <li>Xây dựng API backend và xử lý nghiệp vụ real-time.</li>
+                <li>Tối ưu hệ thống xử lý luồng dữ liệu tổng đài.</li>
+            </ul>
+        </div>
+
+        <!-- AMBROID -->
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title">Ambroid - Glare & Contrast Diagnostic System</span>
+                <span class="item-date">03/2025 - 11/2025</span>
+            </div>
+            <span class="item-role">Software Engineer (C# / WPF / Avalonia / MVVM)</span>
+            <ul>
+                <li>Phát triển hệ thống đo nhãn khoa (glare, contrast sensitivity).</li>
+                <li>Xây dựng UI desktop với MVVM architecture (WPF & Avalonia).</li>
+                <li>Camera live, capture image/video phục vụ chẩn đoán.</li>
+                <li>Chẩn đoán theo flow step-by-step (preset + manual mode).</li>
+                <li>Hiển thị kết quả bằng biểu đồ và export dữ liệu y tế.</li>
+                <li>Quản lý bệnh nhân, lịch sử khám, import/export medical data.</li>
+            </ul>
+        </div>
+
+        <!-- AMETHYST -->
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title">Amethyst - Eye Examination System</span>
+                <span class="item-date">05/2024 - 05/2025</span>
+            </div>
+            <span class="item-role">Software Engineer (C# / WPF / Avalonia / MVVM)</span>
+            <ul>
+                <li>Phát triển ứng dụng khám mắt cho thiết bị y tế.</li>
+                <li>Camera live, chụp ảnh, quay video, annotation (paint/erase/compare).</li>
+                <li>Multi-language (~17 languages) + theme system.</li>
+                <li>Quản lý bệnh nhân + lịch sử khám + export PDF kết quả.</li>
+                <li>Backup/restore dữ liệu và system settings nâng cao.</li>
+            </ul>
+        </div>
+
+        <!-- LTS -->
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title">LTS - KPI Management System</span>
+                <span class="item-date">03/2024 - 11/2024</span>
+            </div>
+            <span class="item-role">Backend Engineer</span>
+            <ul>
+                <li>Xây dựng toàn bộ API hệ thống KPI management.</li>
+                <li>Thiết kế database, migration, tối ưu PostgreSQL queries.</li>
+                <li>Dashboard quản lý client / staff / KPI.</li>
+                <li>Deploy AWS EC2.</li>
+            </ul>
+        </div>
+
+        <!-- CITYPOINT -->
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title">Odawara CityPoint System</span>
+                <span class="item-date">10/2023 - 03/2024</span>
+            </div>
+            <span class="item-role">Backend Engineer (Junior)</span>
+            <ul>
+                <li>Phát triển hệ thống point & reward (web + app).</li>
+                <li>Logic phức tạp: check-in, event, stamp, coupon, lottery.</li>
+                <li>Tích hợp xID authentication + notification system.</li>
+                <li>DynamoDB, queue system, QR code, AWS EC2.</li>
+            </ul>
+        </div>
+
+        <!-- OGURA -->
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title">Ogura Lens Recommendation System</span>
+                <span class="item-date">06/2023 - 10/2023</span>
+            </div>
+            <span class="item-role">Junior Backend Engineer</span>
+            <ul>
+                <li>Xây dựng hệ thống đề xuất tròng kính theo dữ liệu khách hàng.</li>
+                <li>Thiết kế DB + viết toàn bộ API backend.</li>
+                <li>Recommendation engine + export PDF kết quả.</li>
+                <li>Support FE (NextJS / Tailwind CSS).</li>
+            </ul>
+        </div>
+
+        <!-- COCOHOUSE -->
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title">CocoHouse - Cleaning Management System</span>
+                <span class="item-date">02/2023 - 07/2023</span>
+            </div>
+            <span class="item-role">Fresher Backend Engineer</span>
+            <ul>
+                <li>Phát triển hệ thống quản lý khách sạn & nhân viên vệ sinh.</li>
+                <li>Xây dựng API CRUD toàn bộ hệ thống admin.</li>
+                <li>Thiết kế database + migration MySQL (TypeORM).</li>
+            </ul>
+        </div>
+
+        <!-- INTERNAL -->
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title">Internal Platform (SyncPro DIPRO)</span>
+                <span class="item-date">11/2022 - 02/2023</span>
+            </div>
+            <span class="item-role">Backend Intern</span>
+            <ul>
+                <li>Phát triển hệ thống internal: attendance, device, project management.</li>
+                <li>Viết API CRUD bằng NestJS + Prisma.</li>
+                <li>Thiết kế PostgreSQL + migration system.</li>
+                <li>Feature chính: Time Attendance Record system.</li>
             </ul>
         </div>
     </div>
@@ -369,9 +509,18 @@
                 <span class="item-date">2019 - 2023</span>
             </div>
             <a class="item-org" href="https://en.dut.udn.vn/" target="_blank" id="dut-text">ĐẠI HỌC ĐÀ NẴNG - TRƯỜNG ĐẠI HỌC BÁCH KHOA</a>
+            <div class="edu-image">
+                <img src="https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png">
+            </div>
         </div>
-        <div class="edu-image">
-            <img src="https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png">
+        <div class="timeline-item">
+            <div class="item-header">
+                <span class="item-title" id="title-student">Học sinh giỏi Hóa cấp tỉnh</span>
+                <span class="item-date">2019 - 2023</span>
+            </div>
+            <div class="edu-image">
+                <img src="https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png">
+            </div>
         </div>
     </div>
 
@@ -397,7 +546,10 @@ const translations = {
         aboutText2: "Tôi thành thạo xây dựng hệ thống web sử dụng Node.js kết hợp React.js, đồng thời có khả năng phát triển ứng dụng desktop bằng WPF hoặc Avalonia.",
         aboutText3: "Điểm mạnh của tôi là tư duy hệ thống tốt, chú trọng hiệu năng, trải nghiệm người dùng và khả năng mở rộng của sản phẩm. Đặc biệt tôi là người cầu toàn trong công việc luôn muốn mọi thứ thật chỉnh chu.",
         dutText: "ĐẠI HỌC ĐÀ NẴNG - TRƯỜNG ĐẠI HỌC BÁCH KHOA",
-        titleUniversity: "Kỹ sư Công nghệ Thông tin"
+        titleUniversity: "Kỹ sư Công nghệ Thông tin",
+        keySkills: "Kỹ năng chính",
+        tabSkills: "🧩 Kỹ năng",
+        titleStudent: "Học sinh giỏi Hóa cấp tỉnh",
     },
     en: {
         aboutTab: "📄 About",
@@ -410,7 +562,10 @@ const translations = {
         aboutText2: "I specialize in building web systems using Node.js and React.js, and I am also capable of developing desktop applications with WPF or Avalonia.",
         aboutText3: "My strengths include strong system thinking, a focus on performance, user experience, and scalability. I am also detail-oriented and strive for perfection in my work.",
         dutText: "THE UNIVERSITY OF DANANG - UNIVERSITY OF SCIENCE AND TECHNOLOGY",
-        titleUniversity: "Information Technology Engineer"
+        titleUniversity: "Information Technology Engineer",
+        keySkills: "Key Skills",
+        tabSkills: "🧩 Skills",
+        titleStudent: "Provincial Chemistry Excellent Student",
     }
 };
 
@@ -418,6 +573,7 @@ function setLanguage(lang) {
     document.getElementById("tab-about").innerText = translations[lang].aboutTab;
     document.getElementById("tab-exp").innerText = translations[lang].expTab;
     document.getElementById("tab-edu").innerText = translations[lang].eduTab;
+    document.getElementById("tab-skills").innerText = translations[lang].tabSkills;
 
     document.getElementById("about-title").innerText = translations[lang].aboutTitle;
     document.getElementById("exp-title").innerText = translations[lang].expTitle;
@@ -429,6 +585,8 @@ function setLanguage(lang) {
 
     document.getElementById("dut-text").innerText = translations[lang].dutText;
     document.getElementById("title-university").innerText = translations[lang].titleUniversity;
+    document.getElementById("key-skills").innerText = translations[lang].keySkills;
+    document.getElementById("title-student").innerText = translations[lang].titleStudent;
 
     document.getElementById("lang-btn").innerText = lang === "vi" ? "EN" : "VI";
 
