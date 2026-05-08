@@ -1,296 +1,503 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV PhuongVD</title>
-
+    <title>Phuong Vu Duc | Fullstack Developer</title>
+    <meta name="description"
+        content="Portfolio of Phuong Vu Duc, a Fullstack Developer specializing in Node.js, NestJS, React, and robust backend architectures.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #070B14;
+            --surface-color: rgba(20, 27, 45, 0.6);
+            --surface-border: rgba(255, 255, 255, 0.08);
+            --surface-hover: rgba(30, 41, 67, 0.8);
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-1: #38BDF8;
+            --accent-2: #818CF8;
+            --gradient-text: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+            --gradient-glow: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(129, 140, 248, 0.2) 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
-        }
-
-        :root {
-            --bg: #f1f5f9;
-            --text: #0f172a;
-            --card: #ffffff;
-            --border: #e2e8f0;
-            --subtext: #64748b;
-            --primary: #2563eb;
-            --primary-soft: #dbeafe;
-        }
-
-        .dark {
-            --bg: #0b1220;
-            --text: #e5e7eb;
-            --card: #111827;
-            --border: #1f2937;
-            --subtext: #9ca3af;
-            --primary: #60a5fa;
-            --primary-soft: #1e3a8a33;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
             scroll-behavior: smooth;
         }
 
-        .tab-bar {
-            position: sticky;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Background Effects */
+        .bg-glow {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-1 {
+            top: -20vw;
+            left: -20vw;
+        }
+
+        .glow-2 {
+            bottom: -20vw;
+            right: -20vw;
+            background: radial-gradient(circle, rgba(129, 140, 248, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
             top: 0;
-            background: rgba(255, 255, 255, 0.85);
+            width: 100%;
+            background: rgba(7, 11, 20, 0.7);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--surface-border);
             z-index: 100;
+            padding: 1rem 0;
         }
 
-         .dark .tab-bar {
-            background: rgba(2, 6, 23, 0.85);
-        }
-
-        .tab-container {
-            max-width: 880px;
+        .nav-container {
+            max-width: 1000px;
             margin: 0 auto;
             display: flex;
-            gap: 1rem;
             justify-content: center;
-            flex-wrap: wrap;
-            align-items: center;
+            gap: 2rem;
         }
 
-        .tab-link {
+        .nav-container a {
+            color: var(--text-secondary);
             text-decoration: none;
+            font-family: 'Outfit', sans-serif;
             font-weight: 500;
-            color: var(--subtext);
-            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
-        .tab-link:hover {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
+        .nav-container a:hover {
+            color: var(--accent-1);
         }
 
-        .theme-btn {
-            color: var(--text);
-            border: 1px solid var(--border);
-            background: var(--card);
-            padding: 0.4rem 0.9rem;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .theme-btn:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-
+        /* Layout */
         .container {
-            max-width: 880px;
-            margin: 2rem auto 3rem;
-            background-color: var(--card);
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            padding: 2.5rem 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 1.5rem 4rem;
         }
 
-        .dark .container {
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-        }
-
+        /* Header / Hero */
         .hero {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
         }
 
-        .hero img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .hero-info h1 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, var(--text), var(--primary));
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .location {
-            color: var(--subtext);
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background-color: var(--primary-soft);
-            color: var(--primary);
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
-        }
-
-        .stack-item {
-            background: var(--primary-soft);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid var(--border);
-        }
-
-        .contact-info {
-            font-size: 0.95rem;
-            color: var(--subtext);
-            display: flex;
-            flex-direction: column;
-            margin-top: 0.5rem;
-        }
-
-        a {
-            color: var(--text);
-            font-weight: 400;
-            border-bottom: 1px dashed transparent;
-        }
-
-        a:hover {
-            color: var(--primary);
-        }
-
-        .item-org {
-            font-size: 0.9rem;
-        }
-        
-        .section {
-            scroll-margin-top: 100px;
-            margin: 2rem 0;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            border-left: 4px solid var(--primary);
-            padding-left: 1rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .about-text {
-            background-color: var(--bg);
-            padding: 1.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .timeline-item {
-            margin-bottom: 1rem;
-        }
-
-        .timeline-item ul {
-            padding-left: 20px;
-        }
-
-        .timeline-item ul li {
-            line-height: 1.6;
+        .avatar {
             position: relative;
         }
 
-        .item-header {
+        .avatar img {
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: var(--gradient-text);
+            border-radius: 26px;
+            z-index: 1;
+            filter: blur(12px);
+            opacity: 0.7;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .gradient-text {
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .role {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            background: var(--surface-color);
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            border: 1px solid var(--surface-border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-links a:hover {
+            border-color: var(--accent-1);
+            background: var(--surface-hover);
+            transform: translateY(-2px);
+        }
+
+        .contact-links svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--gradient-text);
+            border-radius: 2px;
+        }
+
+        /* Card Style */
+        .glass-card {
+            background: var(--surface-color);
+            border: 1px solid var(--surface-border);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: var(--surface-hover);
+        }
+
+        /* Summary & Goals */
+        .summary-text {
+            font-size: 1.05rem;
+            color: #CBD5E1;
+            line-height: 1.8;
+        }
+
+        /* Strengths */
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .strength-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .strength-icon {
+            color: var(--accent-1);
+            font-size: 1.5rem;
+            margin-top: -4px;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .skill-group-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 0.4rem 1rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-1), rgba(56, 189, 248, 0.1));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.4rem;
+            top: 0.2rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-1);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            z-index: 2;
+        }
+
+        .exp-header {
             display: flex;
             justify-content: space-between;
+            align-items: flex-start;
             flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .item-title {
-            font-size: 1.2rem;
-            font-weight: 600;
+        .exp-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .item-date {
-            font-size: 0.85rem;
-            background: var(--primary-soft);
+        a.exp-title:hover {
+            color: var(--accent-1);
+        }
+
+        .exp-company {
+            font-size: 1.1rem;
+            color: var(--accent-2);
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        .exp-meta {
+            text-align: right;
+        }
+
+        .exp-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            background: rgba(255, 255, 255, 0.05);
             padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            color: var(--primary);
+            border-radius: 6px;
+            display: inline-block;
         }
 
+        .exp-tech {
+            font-size: 0.85rem;
+            color: #94A3B8;
+            margin-top: 0.5rem;
+            font-family: monospace;
+        }
+
+        .exp-desc {
+            list-style: none;
+            color: #CBD5E1;
+        }
+
+        .exp-desc li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .exp-desc li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-1);
+            font-weight: bold;
+        }
+
+        /* Education */
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .edu-degree {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .edu-school {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--subtext);
+            padding: 2rem 0;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--surface-border);
+            font-size: 0.9rem;
+            margin-top: 5rem;
         }
 
-        .social-links a {
-            color: var(--subtext);
-            text-decoration: none;
-            margin: 0 0.5rem;
-        }
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-        .social-links a:hover {
-            color: var(--primary);
-        }
-
-        .stack-list {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .edu-image img {
-            width: 300px;
-            height: auto;
-        }
-
-        .item-role {
-            font-size: 0.85rem;
-            color: var(--subtext);
-            margin-top: 4px;
-            display: inline-block;
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
-                align-items: center;
+                gap: 2rem;
             }
 
-            .hero-info {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .location {
+            .contact-links {
                 justify-content: center;
             }
 
-            .contact-info {
-                align-items: center;
+            .exp-header {
+                flex-direction: column;
+            }
+
+            .exp-meta {
+                text-align: left;
+            }
+
+            .nav-container {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -298,313 +505,626 @@
 
 <body>
 
-<div class="tab-bar">
-    <div class="tab-container">
-        <a href="#stack" class="tab-link" id="tab-skills">🧩 Kỹ năng</a>
-        <a href="#about" class="tab-link" id="tab-about">📄 Giới thiệu</a>
-        <a href="#experience" class="tab-link" id="tab-exp">💼 Kinh nghiệm</a>
-        <a href="#education" class="tab-link" id="tab-edu">🎓 Học vấn</a>
-        <button onclick="toggleTheme()" class="theme-btn" id="theme-btn">🌙</button>
-        <button onclick="toggleLang()" class="theme-btn" id="lang-btn">EN</button>
-    </div>
-</div>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
 
-<div class="container">
-    <div class="hero">
-        <img src="https://sv2.anhsieuviet.com/2026/03/21/image.png">
-        <div class="hero-info">
-            <h1>Vũ Đức Phương</h1>
-            <div class="location">
-                <span class="badge">Fullstack Developer</span>
-            </div>
-            <div class="contact-info">
-                <span>📞 <a href="tel:+84935030419">+84 935 030 419</a></span>
-                <span>✉️ <a href="mailto:vuducphuong2001@gmail.com">vuducphuong2001@gmail.com</a></span>
-                <span>💻 <a href="https://github.com/Phuong276" target="_blank">github.com/Phuong276</a></span>
-            </div>
+    <nav>
+        <div class="nav-container">
+            <a href="#about">About</a>
+            <a href="#strengths">Strengths</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
         </div>
-    </div>
+    </nav>
 
-    <div id="stack" class="section">
-        <div class="section-title" id="key-skills">Kỹ năng chính</div>
-        <div class="stack-list">
-            <span class="stack-item">NodeJS</span>
-            <span class="stack-item">NestJS</span>
-            <span class="stack-item">ReactJS</span>
-            <span class="stack-item">NextJS</span>
-            <span class="stack-item">HTML</span>
-            <span class="stack-item">CSS</span>
-            <span class="stack-item">MySQL</span>
-            <span class="stack-item">PostgreSQL</span>
-            <span class="stack-item">DynamoDB</span>
-            <span class="stack-item">SQLite</span>
-            <span class="stack-item">Prisma</span>
-            <span class="stack-item">TypeORM</span>
-            <span class="stack-item">AWS</span>
-            <span class="stack-item">Avalonia</span>
-            <span class="stack-item">WPF</span>
-            <span class="stack-item">XAML</span>
-            <span class="stack-item">Binding</span>
-            <span class="stack-item">MVVM</span>
-            <span class="stack-item">MVC</span>
-            <span class="stack-item">...</span>
-        </div>
-    </div>
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="avatar">
+                <img src="https://sv2.anhsieuviet.com/2026/03/21/image.png" alt="Phuong Vu Duc">
+            </div>
+            <div class="hero-content">
+                <h1>Phuong <span class="gradient-text">Vu Duc</span></h1>
+                <div class="role">
+                    <span>Fullstack Developer</span>
+                </div>
+                <div class="contact-links">
+                    <a href="mailto:vuducphuong2001@gmail.com">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        vuducphuong2001@gmail.com
+                    </a>
+                    <a href="tel:+84935030419">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                        </svg>
+                        +84 935 030 419
+                    </a>
+                    <a href="https://github.com/Phuong276" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/phương-vũ-đức-0519b43ab/" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <div id="about" class="section">
-        <div class="section-title" id="about-title">Giới thiệu</div>
-        <div class="about-text">
-            <p id="about-text1">Xin chào, tôi là một Fullstack Developer với kinh nghiệm phát triển cả ứng dụng web và desktop.</p>
-            <p id="about-text2">Tôi thành thạo xây dựng hệ thống web sử dụng Node.js kết hợp React.js, đồng thời có khả năng phát triển ứng dụng desktop bằng WPF hoặc Avalonia.</p>
-            <p id="about-text3">Điểm mạnh của tôi là tư duy hệ thống tốt, chú trọng hiệu năng, trải nghiệm người dùng và khả năng mở rộng của sản phẩm. Đặc biệt tôi là người cầu toàn trong công việc luôn muốn mọi thứ thật chỉnh chu.</p>
-        </div>
-    </div>
+        <!-- Professional Summary -->
+        <section class="section glass-card" id="about">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="summary-text">
+                <p style="margin-bottom: 1rem;">
+                    <strong>Fullstack Developer (Node.js/React) | 3+ Years Experience</strong> </br>
+                    Specializing in complex logic systems, database architecture, scalable frontend systems and
+                    cross-platform delivery
+                </p>
+                <ul style="list-style-type: none; padding-left: 0;">
+                    <li style="margin-bottom: 8px;">
+                        • <strong>Backend Expertise:</strong> Specialized in <strong>Node.js/NestJS</strong>,
+                        architecting <strong>complex logic</strong> for loyalty systems, <strong>automated valuation
+                            engines</strong> integrated with
+                        real-time auction platforms and KPI tracking systems.
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        • <strong>Full-cycle Delivery:</strong> Experienced in the <strong>entire lifecycle</strong>
+                        from <strong>database
+                            modeling</strong> and <strong>API development</strong> to <strong>Cloud deployment</strong>
+                        and system monitoring.
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        • <strong>AI-Driven Productivity:</strong> Proficient in leveraging <strong>AI Agents
+                            (Antigravity,
+                            Claude Code)</strong> to automate repetitive tasks, <strong>accelerate refactoring</strong>,
+                        and optimize development
+                        workflows, significantly <strong>increasing delivery velocity</strong>.
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        • <strong>System Integration:</strong> Strong experience in <strong>integrating complex
+                            third-party
+                            services</strong>, including Auth solutions (<strong>Keycloak</strong>), Digital Identity
+                        (<strong>xID, PXR</strong>), and Global
+                        APIs (<strong>Rakuten, ChatGPT</strong>).
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        • <strong>Frontend Capability:</strong> Experienced in <strong>ReactJS/NextJS</strong> to
+                        support full-cycle
+                        product delivery, focusing on <strong>component-based architecture</strong> and
+                        <strong>optimized user flows</strong>.
+                    </li>
+                    <li style="margin-bottom: 8px;">
+                        • <strong>Adaptability:</strong> Proven ability to <strong>learn fast</strong>, transitioning
+                        from JavaScript to
+                        <strong>C# (Avalonia, WPF)</strong> for medical applications within <strong>just 2
+                            weeks</strong>.
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-    <div id="experience" class="section">
-        <div class="section-title" id="exp-title">Kinh nghiệm</div>
+        <!-- Key Strengths -->
+        <section class="section" id="strengths">
+            <h2 class="section-title">Key Strengths</h2>
+            <div class="strengths-grid">
+                <div class="glass-card strength-item">
+                    <div class="strength-icon">❖</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">Full-Cycle Ownership</h3>
+                        <p class="summary-text" style="font-size: 0.95rem;"><strong>Schema Modeling</strong> →
+                            <strong>API Development</strong> →
+                            <strong>Deployment</strong> → <strong>System Monitoring</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="glass-card strength-item">
+                    <div class="strength-icon">❖</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">Complex Logic Specialist</h3>
+                        <p class="summary-text" style="font-size: 0.95rem;"><strong>Multi-tier Loyalty &
+                                Coupons</strong>, <strong>Lottery
+                                Mechanics</strong>, <strong>Scheduled Notifications</strong>, <strong>Automated
+                                Valuation</strong> with Real-time Auctions, and
+                            <strong>High-scale KPI Tracking</strong>.
+                        </p>
+                    </div>
+                </div>
+                <div class="glass-card strength-item">
+                    <div class="strength-icon">❖</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">High Learning Agility</h3>
+                        <p class="summary-text" style="font-size: 0.95rem;">Successfully <strong>transitioning to the C#
+                                ecosystem</strong>, mastering <strong>WPF/Avalonia</strong> to ship <strong>complex
+                                medical software features</strong> within the <strong>very
+                                first sprint</strong>.</p>
+                    </div>
+                </div>
+                <div class="glass-card strength-item">
+                    <div class="strength-icon">❖</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">Full-Stack Flexibility</h3>
+                        <p class="summary-text" style="font-size: 0.95rem;">Bridging the gap between <strong>Backend and
+                                Frontend</strong> with <strong>high-quality React/Next.js interfaces</strong>, ensuring
+                            <strong>cohesive user experiences</strong> and
+                            <strong>seamless project delivery</strong>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- GolfBid -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <a class="item-title" href="https://japan-golf.exchange" target="_blank">GolfBid - Golf Ticket Auction Web System</a>
-                <span class="item-date">11/2025 - Now</span>
+        <!-- Technical Skills -->
+        <section class="section glass-card" id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-group">
+                    <div class="skill-group-name">Backend & Core</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">NodeJS (NestJS, Express)</span>
+                        <span class="skill-tag">C# (WPF/Avalonia)</span>
+                        <span class="skill-tag">NVVM</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-name">AI & Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Antigravity</span>
+                        <span class="skill-tag">Claude Code</span>
+                        <span class="skill-tag">GitHub Copilot</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Visual Studio</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-name">Frontend & UI Development</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">ReactJS</span>
+                        <span class="skill-tag">NextJS</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">XAML</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-name">Database & Persistence</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">DynamoDB</span>
+                        <span class="skill-tag">SQLite</span>
+                        <span class="skill-tag">Prisma</span>
+                        <span class="skill-tag">TypeORM</span>
+                        <span class="skill-tag">EF Core</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-name">Cloud & DevOps</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">AWS (EC2, S3)</span>
+                        <span class="skill-tag">Docker (Basic)</span>
+                        <span class="skill-tag">Log Analysis</span>
+                        <span class="skill-tag">CI/CD (Basic)</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-name">Auth & Security</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Keycloak</span>
+                        <span class="skill-tag">JWT</span>
+                        <span class="skill-tag">OAuth2</span>
+                        <span class="skill-tag">xID Integration</span>
+                        <span class="skill-tag">Authentication</span>
+                        <span class="skill-tag">Authorization</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-name">Testing & Quality</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Unit Testing</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Swagger</span>
+                        <span class="skill-tag">Backlog</span>
+                    </div>
+                </div>
+                <div class="skill-group">
+                    <div class="skill-group-name">Third-Party</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Rakuten</span>
+                        <span class="skill-tag">ChatGPT</span>
+                        <span class="skill-tag">xID</span>
+                        <span class="skill-tag">PXR</span>
+                        <span class="skill-tag">Stripe</span>
+                    </div>
+                </div>
             </div>
-            <span class="item-role">Software Engineer</span>
-           <ul>
-                <li>Xây dựng hệ thống đấu giá (auction system) cho thẻ chơi golf.</li>
-                <li>Thiết kế và quản lý transaction system (bid, payment flow, trạng thái giao dịch).</li>
-                <li>Quản lý dữ liệu thẻ golf: pricing, availability, history usage.</li>
-                <li>Áp dụng AI để hỗ trợ định giá thẻ golf dựa trên dữ liệu thị trường.</li>
-                <li>Tích hợp Rakuten API để hiển thị và đồng bộ thông tin sân golf.</li>
-                <li>Thiết kế database tối ưu cho hệ thống nhiều lượt bid đồng thời (concurrency handling).</li>
-            </ul>
-        </div>
+        </section>
 
-        <!-- AMBROID -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <span class="item-title">Ambroid - Glare & Contrast Diagnostic Desktop App</span>
-                <span class="item-date">03/2025 - 11/2025</span>
-            </div>
-            <span class="item-role">Software Engineer</span>
-            <ul>
-                <li>Phát triển hệ thống đo nhãn khoa (glare, contrast sensitivity).</li>
-                <li>Xây dựng UI desktop với MVVM architecture (WPF & Avalonia).</li>
-                <li>Camera live, capture image/video phục vụ chẩn đoán.</li>
-                <li>Chẩn đoán theo flow step-by-step (preset + manual mode).</li>
-                <li>Hiển thị kết quả bằng biểu đồ và export dữ liệu y tế.</li>
-                <li>Quản lý bệnh nhân, lịch sử khám, import/export medical data.</li>
-            </ul>
-        </div>
+        <!-- Work Experience -->
+        <section class="section" id="experience">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
 
-        <!-- AMETHYST -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <span class="item-title">Amethyst - Eye Examination Desktop App</span>
-                <span class="item-date">05/2024 - 05/2025</span>
-            </div>
-            <span class="item-role">Software Engineer</span>
-            <ul>
-                <li>Phát triển ứng dụng khám mắt cho thiết bị y tế.</li>
-                <li>Camera live, chụp ảnh, quay video, annotation (paint/erase/compare).</li>
-                <li>Multi-language (~17 languages) + theme system.</li>
-                <li>Quản lý bệnh nhân + lịch sử khám + export PDF kết quả.</li>
-                <li>Backup/restore dữ liệu và system settings nâng cao.</li>
-            </ul>
-        </div>
+                <!-- GolfBid -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <a href="https://japan-golf.exchange" target="_blank" class="exp-title">GolfBid
+                                (japan-golf.exchange)</a>
+                            <div class="exp-company">Fullstack Developer</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">Nov 2025 – Present</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">NestJS · PostgreSQL · Prisma · ReactJS · ChatGPT
+                        API · Rakuten API</div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">A high-stakes golf
+                        membership trading & auction platform for the Japanese market, featuring AI-driven valuation,
+                        automated bidding engines, and legally-binding PDF contract generation.</p>
+                    <ul class="exp-desc">
+                        <li><strong>System Architecture:</strong> <strong>Architected</strong> the complete
+                            <strong>database schema</strong> and engineered a <strong>complex state
+                                machine</strong> to handle <strong>high-stakes transactions</strong> (bidding,
+                            fixed-price, cancellations) with <strong>strict
+                                rollback safety</strong>.
+                        </li>
+                        <li><strong>Core Engineering:</strong> <strong>Refactored</strong> the company's NestJS
+                            boilerplate to <strong>standardize response
+                                validation and pagination</strong>; implemented <strong>automated cron jobs</strong> for
+                            deadline resolution without
+                            manual intervention.</li>
+                        <li><strong>AI & Integration:</strong> <strong>Integrated ChatGPT API</strong> for automated
+                            card valuation and <strong>Rakuten API</strong> for
+                            real-time course syncing; built a <strong>PDF engine</strong> for digital contract
+                            generation and signing.
+                        </li>
+                        <li><strong>Admin Control Center:</strong> Developed a <strong>comprehensive Admin
+                                Panel</strong> using ReactJS, featuring
+                            <strong>real-time revenue monitoring</strong>, transaction management, and <strong>automated
+                                approval workflows</strong>.
+                        </li>
+                        <li><strong>Core API Delivery:</strong> Delivered the <strong>majority of user-facing
+                                APIs</strong>, ensuring seamless integration
+                            for high-traffic features like <strong>auction bidding systems</strong> and transaction
+                            histories.</li>
+                    </ul>
+                </div>
 
-        <!-- LTS -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <a class="item-title" href="https://litmuskpi.com" target="_blank">LTS - KPI Management Web System</a>
-                <span class="item-date">03/2024 - 11/2024</span>
-            </div>
-            <span class="item-role">Fullstack Engineer</span>
-            <ul>
-                <li>Xây dựng toàn bộ API hệ thống KPI management.</li>
-                <li>Thiết kế database, migration, tối ưu PostgreSQL queries.</li>
-                <li>Dashboard quản lý client / staff / KPI.</li>
-                <li>Deploy AWS EC2.</li>
-            </ul>
-        </div>
+                <!-- AmBroid -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">AmBroid — Contrast Vision App</div>
+                            <div class="exp-company">Desktop Developer</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">Mar 2025 – Nov 2025</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">C# · MVVM · Avalonia · SQLite · EF Core · AXAML
+                    </div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">A high-precision
+                        cross-platform desktop application for quantitative contrast sensitivity and glare impact
+                        diagnostics, supporting clinical decisions in pre/post cataract and refractive surgeries.</p>
+                    <ul class="exp-desc">
+                        <li><strong>Cross-Platform Diagnostic Suite:</strong> Developing a <strong>multi-platform
+                                desktop application</strong> for
+                            <strong>quantitative contrast sensitivity</strong> and glare impact measurement, critical
+                            for pre/post
+                            cataract surgery diagnostics.
+                        </li>
+                        <li><strong>Complex Clinical Workflows:</strong> Engineered <strong>sophisticated diagnosis
+                                engines</strong> supporting both
+                            automated and manual modes, featuring <strong>real-time progress tracking</strong> and
+                            interactive
+                            re-diagnosis capabilities (pause, skip, backtrack).</li>
+                        <li><strong>Data Visualization & Management:</strong> Implemented <strong>dynamic chart
+                                rendering</strong> for diagnostic results
+                            (Contrast Sensitivity vs. Threshold) and managed a <strong>comprehensive patient data
+                                lifecycle</strong> including historical comparisons and <strong>secure data
+                                export</strong>.</li>
+                        <li><strong>UI Architecture & Modernization:</strong> <strong>Transitioned the legacy
+                                UI</strong> to a modern, maintainable
+                            architecture using the <strong>MVVM pattern</strong>, significantly improving code
+                            readability and
+                            testability.</li>
+                        <li><strong>System Reliability:</strong> Developed a <strong>dedicated maintenance
+                                module</strong> for network testing,
+                            touch-sensor calibration, and <strong>system log analysis</strong> to ensure high precision
+                            in clinical
+                            environments.</li>
+                    </ul>
+                </div>
 
-        <!-- CITYPOINT -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <span class="item-title">Odawara - City Points Mobile App</span>
-                <span class="item-date">10/2023 - 03/2024</span>
-            </div>
-            <span class="item-role">Backend Engineer</span>
-            <ul>
-                <li>Phát triển hệ thống point & reward (web + app).</li>
-                <li>Logic phức tạp: check-in, event, stamp, coupon, lottery.</li>
-                <li>Tích hợp xID authentication + notification system.</li>
-                <li>DynamoDB, queue system, QR code, AWS EC2.</li>
-            </ul>
-        </div>
+                <!-- Amethyst -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Amethyst — Eye Examination App</div>
+                            <div class="exp-company">Desktop Developer</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">May 2024 – May 2025</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">C# · WPF · MVVM · SQLite · EF Core · XAML</div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">A specialized medical
+                        desktop application for ophthalmologists, featuring high-performance live camera streaming,
+                        real-time diagnostic imaging, and comprehensive patient history management.</p>
+                    <ul class="exp-desc">
+                        <li><strong>High-Speed Adaptation:</strong> Successfully <strong>transitioned from JavaScript to
+                                C#/WPF within 2 weeks</strong>,
+                            becoming a <strong>core contributor</strong> to a specialized medical application for
+                            ophthalmologists.</li>
+                        <li><strong>Advanced UI/UX Features:</strong> Engineered complex desktop functionalities
+                            including <strong>Live Camera
+                                Streaming</strong>, <strong>real-time photo/video annotation</strong> (Digital Paint),
+                            image comparison, and
+                            multi-axis layout switching.
+                        </li>
+                        <li><strong>Localization & Theming:</strong> Architected a <strong>scalable globalization system
+                                supporting 17 languages</strong>
+                            and a <strong>dynamic theme engine</strong> (Light, Dark, Takagi Blue) using XAML Styles and
+                            Templates.</li>
+                        <li><strong>Performance & Architecture:</strong> Applied <strong>MVVM pattern</strong> and
+                            <strong>Dependency Injection</strong> to ensure clean
+                            code separation; <strong>optimized DataGrid rendering</strong> and <strong>SQLite
+                                queries</strong> via EF Core for high-volume
+                            patient data management.
+                        </li>
+                    </ul>
+                </div>
 
-        <!-- OGURA -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <a class="item-title" href="https://www.ogura-megane.co.jp" target="_blank">Ogura - Lens Recommendation Web System</a>
-                <span class="item-date">06/2023 - 10/2023</span>
-            </div>
-            <span class="item-role">Fullstack Engineer</span>
-            <ul>
-                <li>Xây dựng hệ thống đề xuất tròng kính theo dữ liệu khách hàng.</li>
-                <li>Thiết kế DB + viết toàn bộ API backend.</li>
-                <li>Recommendation engine + export PDF kết quả.</li>
-                <li>Support FE (NextJS / Tailwind CSS).</li>
-            </ul>
-        </div>
+                <!-- LTS -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <a href="https://litmuskpi.com" target="_blank" class="exp-title">LTS (litmuskpi.com)</a>
+                            <div class="exp-company">Backend Developer</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">Mar 2024 – Nov 2024</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">NestJS · Prisma · PostgreSQL · AWS EC2 · Nginx ·
+                        PM2</div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">An enterprise-grade KPI
+                        management platform featuring complex multi-level data structures, optimized for
+                        high-performance real-time tracking and automated departmental reporting.</p>
+                    <ul class="exp-desc">
+                        <li><strong>Full-stack API Ownership:</strong> <strong>Independently architected</strong> the
+                            entire backend layer and <strong>database
+                                schema</strong> for an <strong>enterprise-grade KPI management platform</strong>,
+                            covering Clients, Departments, and
+                            multi-level KPI structures.</li>
+                        <li><strong>Performance Optimization:</strong> <strong>Optimized complex data relations</strong>
+                            and query performance using
+                            <strong>Prisma tuning</strong> and <strong>strategic PostgreSQL indexing</strong>, ensuring
+                            a seamless experience for
+                            <strong>real-time dashboard tracking</strong>.
+                        </li>
+                        <li><strong>Cloud Infrastructure:</strong> <strong>Owned the end-to-end deployment
+                                process</strong> on <strong>AWS EC2</strong>, configuring <strong>Nginx
+                                and PM2</strong> to ensure high availability and robust server performance.</li>
+                    </ul>
+                </div>
 
-        <!-- COCOHOUSE -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <a class="item-title" href="https://admin.55cleaning.com" target="_blank">CoCoHouse - Cleaning Management Web System</a>
-                <span class="item-date">02/2023 - 07/2023</span>
-            </div>
-            <span class="item-role">Backend Engineer</span>
-            <ul>
-                <li>Phát triển hệ thống quản lý khách sạn & nhân viên vệ sinh.</li>
-                <li>Xây dựng API CRUD toàn bộ hệ thống admin.</li>
-                <li>Thiết kế database + migration MySQL (TypeORM).</li>
-            </ul>
-        </div>
+                <!-- Odawara -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title"> Odawara — City Point App</div>
+                            <div class="exp-company">Backend Developer</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">Oct 2023 – Mar 2024</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">NestJS · DynamoDB · Keycloak · AWS EC2/S3 · xID ·
+                        PXR
+                    </div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">A city-scale tourism and
+                        loyalty platform for Odawara City, integrating digital identity (xID) and global library systems
+                        (PXR) to manage multi-method point rewards for thousands of citizens.</p>
+                    <ul class="exp-desc">
+                        <li><strong>Logic Architecture:</strong> <strong>Engineered ~90% of the backend</strong> for a
+                            city-scale tourism platform,
+                            including a <strong>multi-method point engine</strong> (QR Check-in, Stamp Rally, Library
+                            PXR, Hometown Tax)
+                            and <strong>complex lottery mechanics</strong>.
+                        </li>
+                        <li><strong>System Integration:</strong> <strong>Independently integrated xID</strong> (Digital
+                            Identity) and <strong>PXR</strong> (Global Library
+                            API); architected a <strong>secure Auth system using Keycloak</strong> to manage thousands
+                            of Users, Agents,
+                            and Admins.</li>
+                        <li><strong>Infrastructure & Optimization:</strong> <strong>Optimized DynamoDB
+                                performance</strong> via strategic Indexing,
+                            handled <strong>mass notifications/CSV processing using Queues (Bull/Redis)</strong>, and
+                            resolved <strong>critical
+                                production bugs</strong> through log analysis.</li>
+                    </ul>
+                </div>
 
-        <!-- INTERNAL -->
-        <div class="timeline-item">
-            <div class="item-header">
-                <a class="item-title" href="https://syncpro.dipro-tech.com" target="_blank">SyncPro - Internal Management Web System</a>
-                <span class="item-date">11/2022 - 02/2023</span>
-            </div>
-            <span class="item-role">Backend Engineer</span>
-            <ul>
-                <li>Phát triển hệ thống internal: attendance, device, project management.</li>
-                <li>Viết API CRUD bằng NestJS + Prisma.</li>
-                <li>Thiết kế PostgreSQL + migration system.</li>
-                <li>Feature chính: Time Attendance Record system.</li>
-            </ul>
-        </div>
-    </div>
+                <!-- Ogura -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <div class="exp-title">Ogura / LensMaintenance</div>
+                            <div class="exp-company">Backend Developer + Frontend Support</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">Jun 2023 – Oct 2023</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">NestJS · Prisma · PostgreSQL · NextJS · Tailwind
+                        CSS
+                    </div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">A specialized eyewear
+                        recommendation system that automates lens selection through a complex logic engine, providing
+                        personalized eye-care solutions based on clinical parameters and lifestyle data.</p>
+                    <ul class="exp-desc">
+                        <li><strong>Recommendation Engine:</strong> Designed and implemented <strong>complex
+                                logic</strong> to suggest top 3 optimal
+                            lenses based on eye parameters, lifestyle, and user preferences.</li>
+                        <li><strong>Feature Engineering:</strong> Developed <strong>PDF export functionality</strong>
+                            for final results and built
+                            <strong>comprehensive CRUD systems</strong> for lens inventories and options.
+                        </li>
+                        <li><strong>Cross-Domain Contribution:</strong> Stepped in as <strong>Frontend Support</strong>
+                            during a resource shortage,
+                            delivering UI components using <strong>Next.js and Tailwind CSS</strong> to ensure the
+                            project stayed on
+                            schedule.
+                        </li>
+                    </ul>
+                </div>
 
-    <div id="education" class="section">
-        <div class="section-title" id="edu-title">Học vấn</div>
-        <div class="timeline-item">
-            <div class="item-header">
-                <span class="item-title" id="title-university">Kỹ sư Công nghệ Thông tin</span>
-                <span class="item-date">2019 - 2023</span>
+                <!-- CocoHouse -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <a href="https://admin.55cleaning.com" target="_blank" class="exp-title">CocoHouse
+                                (admin.55cleaning.com)</a>
+                            <div class="exp-company">Backend Developer</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">Feb 2023 – Jul 2023</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">Express · TypeORM · MySQL · Socket.io</div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">A real-time administrative
+                        ecosystem for hotel cleaning services, featuring instant task-tracking via Socket.io and a
+                        robust management suite for staff, points, and multi-hotel operations.</p>
+                    <ul class="exp-desc">
+                        <li><strong>Core Admin API:</strong> <strong>Engineered the entire API suite</strong> for the
+                            Web Admin, covering account, hotel,
+                            staff, and point management systems.</li>
+                        <li><strong>Real-time Operations:</strong> Implemented <strong>Socket.io</strong> to provide
+                            <strong>instant task-status updates</strong> and <strong>live
+                                dashboard tracking</strong> for hotel managers.
+                        </li>
+                        <li><strong>System Architecture:</strong> <strong>Designed and migrated the MySQL database
+                                schema</strong> using TypeORM, ensuring
+                            high data consistency for cleaning performance metrics.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SyncPro -->
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="exp-header">
+                        <div>
+                            <a href="https://syncpro.dipro-tech.com" target="_blank" class="exp-title">SyncPro
+                                (syncpro.dipro-tech.com)</a>
+                            <div class="exp-company">Backend Developer</div>
+                        </div>
+                        <div class="exp-meta">
+                            <span class="exp-date">Nov 2022 – Feb 2023</span>
+                        </div>
+                    </div>
+                    <div class="exp-tech" style="margin-bottom: 1rem;">NextJS · TypeScript · Prisma ·
+                        PostgreSQL</div>
+                    <p class="summary-text" style="margin-bottom: 1rem; font-size: 0.95rem;">A centralized resource
+                        management engine focused on streamlining internal operations through automated timesheets,
+                        device tracking, and high-integrity data reporting for division-level management.</p>
+                    <ul class="exp-desc">
+                        <li><strong>Attendance & Resource Engine:</strong> Developed the <strong>core logic</strong> for
+                            <strong>Time Attendance, Device Tracking,
+                                and Timesheet modules</strong>.
+                        </li>
+                        <li><strong>Data Management:</strong> <strong>Architected CRUD APIs</strong> and executed
+                            <strong>DB migrations</strong> to <strong>automate weekly
+                                work-hour calculations</strong> and division-level reporting.
+                        </li>
+                        <li><strong>System Integrity:</strong> <strong>Optimized PostgreSQL schemas</strong> via Prisma
+                            to ensure reliable record-keeping
+                            for internal operations.</li>
+                    </ul>
+                </div>
+
             </div>
-            <a class="item-org" href="https://en.dut.udn.vn/" target="_blank" id="dut-text">ĐẠI HỌC ĐÀ NẴNG - TRƯỜNG ĐẠI HỌC BÁCH KHOA</a>
-            <div class="edu-image">
-                <img src="https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png">
+        </section>
+
+        <!-- Education -->
+        <section class="section glass-card" id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-item">
+                <div>
+                    <div class="edu-degree">Bachelor of Information Technology</div>
+                    <div class="edu-school">ĐẠI HỌC ĐÀ NẴNG - TRƯỜNG ĐẠI HỌC BÁCH KHOA</div>
+                </div>
+                <div class="exp-meta">
+                    <span class="exp-date">2019 – 2023</span>
+                </div>
+                <div>
+                    <img src="https://sv2.anhsieuviet.com/2026/05/08/bang1.jpg" height="200">
+                    <img src="https://sv2.anhsieuviet.com/2026/05/08/bang2.jpg" height="200">
+                </div>
             </div>
-        </div>
-        <div class="timeline-item">
-            <div class="item-header">
-                <span class="item-title" id="title-student">Học sinh giỏi Hóa cấp tỉnh</span>
-                <span class="item-date">2019 - 2023</span>
-            </div>
-            <div class="edu-image">
-                <img src="https://nads.1cdn.vn/2024/11/22/74da3f39-759b-4f08-8850-4c8f2937e81a-1_mangeshdes.png">
-            </div>
-        </div>
-    </div>
+        </section>
+
+        <!-- Career Goal -->
+        <section class="section glass-card"
+            style="border-color: rgba(129, 140, 248, 0.4); background: linear-gradient(180deg, rgba(30,41,67,0.8) 0%, rgba(20,27,45,0.6) 100%);"
+            id="goal">
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Career Goal</h2>
+            <p class="summary-text" style="font-size: 1.1rem; max-width: 860px; margin: 0 auto;">
+                Targeting a <strong style="color: var(--text-primary);">Middle Fullstack (Node.js + ReactJS)</strong>
+                role where I can take ownership of backend architecture while growing my frontend depth. Aiming to reach
+                <strong style="color: var(--accent-1);">Senior Engineer / Technical Lead</strong> level within 3 years,
+                focusing on high-performance system design and meaningful product impact.
+            </p>
+        </section>
+    </main>
 
     <footer>
-        <p>© 2026 PhuongVD. Personal Portfolio.</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/ph%C6%B0%C6%A1ng-v%C5%A9-%C4%91%E1%BB%A9c-0519b43ab/" target="_blank">LinkedIn</a> •
-            <a href="https://www.facebook.com/nguoi.dung.an.danh.75672/" target="_blank">Facebook</a>
-        </div>
+        <p>© 2026 Phuong Vu Duc</p>
     </footer>
-</div>
 
-<script>
-const translations = {
-    vi: {
-        aboutTab: "📄 Giới thiệu",
-        expTab: "💼 Kinh nghiệm",
-        eduTab: "🎓 Học vấn",
-        aboutTitle: "Giới thiệu",
-        expTitle: "Kinh nghiệm",
-        eduTitle: "Học vấn",
-        aboutText1: "Xin chào, tôi là một Fullstack Developer với kinh nghiệm phát triển cả ứng dụng web và desktop.",
-        aboutText2: "Tôi thành thạo xây dựng hệ thống web sử dụng Node.js kết hợp React.js, đồng thời có khả năng phát triển ứng dụng desktop bằng WPF hoặc Avalonia.",
-        aboutText3: "Điểm mạnh của tôi là tư duy hệ thống tốt, chú trọng hiệu năng, trải nghiệm người dùng và khả năng mở rộng của sản phẩm. Đặc biệt tôi là người cầu toàn trong công việc luôn muốn mọi thứ thật chỉnh chu.",
-        dutText: "ĐẠI HỌC ĐÀ NẴNG - TRƯỜNG ĐẠI HỌC BÁCH KHOA",
-        titleUniversity: "Kỹ sư Công nghệ Thông tin",
-        keySkills: "Kỹ năng chính",
-        tabSkills: "🧩 Kỹ năng",
-        titleStudent: "Học sinh giỏi Hóa cấp tỉnh",
-    },
-    en: {
-        aboutTab: "📄 About",
-        expTab: "💼 Experience",
-        eduTab: "🎓 Education",
-        aboutTitle: "About Me",
-        expTitle: "Work Experience",
-        eduTitle: "Education",
-        aboutText1: "Hello, I am a Fullstack Developer with experience in both web and desktop application development.",
-        aboutText2: "I specialize in building web systems using Node.js and React.js, and I am also capable of developing desktop applications with WPF or Avalonia.",
-        aboutText3: "My strengths include strong system thinking, a focus on performance, user experience, and scalability. I am also detail-oriented and strive for perfection in my work.",
-        dutText: "THE UNIVERSITY OF DANANG - UNIVERSITY OF SCIENCE AND TECHNOLOGY",
-        titleUniversity: "Information Technology Engineer",
-        keySkills: "Key Skills",
-        tabSkills: "🧩 Skills",
-        titleStudent: "Provincial Chemistry Excellent Student",
-    }
-};
+    <script>
+        // Scroll Animation Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-function setLanguage(lang) {
-    document.getElementById("tab-about").innerText = translations[lang].aboutTab;
-    document.getElementById("tab-exp").innerText = translations[lang].expTab;
-    document.getElementById("tab-edu").innerText = translations[lang].eduTab;
-    document.getElementById("tab-skills").innerText = translations[lang].tabSkills;
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-    document.getElementById("about-title").innerText = translations[lang].aboutTitle;
-    document.getElementById("exp-title").innerText = translations[lang].expTitle;
-    document.getElementById("edu-title").innerText = translations[lang].eduTitle;
-
-    document.getElementById("about-text1").innerText = translations[lang].aboutText1;
-    document.getElementById("about-text2").innerText = translations[lang].aboutText2;
-    document.getElementById("about-text3").innerText = translations[lang].aboutText3;
-
-    document.getElementById("dut-text").innerText = translations[lang].dutText;
-    document.getElementById("title-university").innerText = translations[lang].titleUniversity;
-    document.getElementById("key-skills").innerText = translations[lang].keySkills;
-    document.getElementById("title-student").innerText = translations[lang].titleStudent;
-
-    document.getElementById("lang-btn").innerText = lang === "vi" ? "EN" : "VI";
-
-    localStorage.setItem("lang", lang);
-}
-
-function toggleLang() {
-    const current = localStorage.getItem("lang") || "vi";
-    setLanguage(current === "vi" ? "en" : "vi");
-}
-
-function toggleTheme() {
-    const btn = document.querySelector(".theme-btn");
-    const isDark = document.body.classList.toggle("dark");
-
-    btn.innerText = isDark ? "☀️" : "🌙";
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-}
-
-window.onload = () => {
-    const savedTheme = localStorage.getItem("theme");
-    const savedLang = localStorage.getItem("lang") || "en";
-
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark");
-        document.getElementById("theme-btn").innerText = "☀️";
-    }
-
-    setLanguage(savedLang);
-};
-</script>
-
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
+
 </html>
